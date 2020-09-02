@@ -1,0 +1,31 @@
+<!-- 
+<div class="map-container">
+  <div class="map-frame">
+    <div id="map"></div>
+  </div>
+</div>
+ -->
+
+
+  <div class="card" >
+    <div class="card-img-top">
+    	<div class="map"></div>
+     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+     	 <agm-data-layer  [geoJson]="geoJsonObject" (layerClick)="clicked($event)" [style]="styleFunc" >
+          
+     </agm-data-layer>
+       <agm-marker 
+      *ngFor="let g of geocode; let i = index"
+      (markerClick)="clickedMarker(g.label, i)"
+      [latitude]="g.lat"
+      [longitude]="g.lon">
+      
+    <agm-info-window>
+      <strong>Macet</strong>
+      <strong>{{g.display_name}}</strong>
+    </agm-info-window>
+    
+  </agm-marker>
+  </agm-map>
+    </div>
+  </div>
