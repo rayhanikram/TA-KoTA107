@@ -26,8 +26,8 @@ export class MapstreammerComponent {
   zoom: number = 13;
   iterasi: number;
   geoJsonObject: any;
-  geocodeSubs: Subscription[];
-  geocode: GeocodeResponse[];
+  geocodeSubs: Subscription;
+  geocode: any;
   map: any;
   //private map;
   //geoJson = JSON.parse('assets/kota-bandung.json');
@@ -51,24 +51,12 @@ clickedMarker(label: string, index: number) {
       .subscribe(resGeoJsonData => this.geoJsonObject = resGeoJsonData);
   }
 
-  markerlocation() {
-     this.nominatim
-      .getLocation(this.alamat[1])
-      .subscribe(res => {
-          this.geocode = res;
-        },
-        console.error
-      );
-  }
-
 
   ngOnInit() : void {
 
- // this.geocodeSubs[0] = 
-
-
+ this.geocodeSubs = 
   this.nominatim
-      .getLocation(this.alamat[3])
+      .getLocation()
       .subscribe(res => {
           this.geocode = res;
         },

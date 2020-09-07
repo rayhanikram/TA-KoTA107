@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 
 // Import containers
 import { DefaultLayoutComponent } from './containers';
-import {DataTweetsApiService} from './containers/default-layout/datatweets-api.service';
+import {ApiService} from './containers/default-layout/api.service';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
@@ -73,7 +73,7 @@ import { ChartsModule } from 'ng2-charts';
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
     
-  },DataTweetsApiService],
+  },ApiService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

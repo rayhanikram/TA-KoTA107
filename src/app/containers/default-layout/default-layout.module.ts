@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 
 import {DefaultLayoutComponent} from './default-layout.component';
-import {DataTweetsApiService} from './datatweets-api.service';
+import {ApiService} from './api.service';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import {DataTweetsApiService} from './datatweets-api.service';
     BrowserModule,
     HttpClientModule,
   ],
-  providers: [DataTweetsApiService]
+  providers: [ApiService]
 })
 export class DefaultLayoutModule {
 }

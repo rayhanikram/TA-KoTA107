@@ -1,1 +1,0 @@
-export const GEOCODING_ENDPOINT = 'https://nominatim.openstreetmap.org/search?format=json&countrycodes=ID&viewbox=107.534180,-7.032068,107.745323,-6.848032&bounded=1&q=';

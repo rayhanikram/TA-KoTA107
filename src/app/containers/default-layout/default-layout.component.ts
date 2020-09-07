@@ -1,8 +1,9 @@
 import {Component, OnInit } from '@angular/core';
 import { navItems } from '../../_nav';
 import {Subscription} from 'rxjs/Subscription';
-import {DataTweetsApiService} from './datatweets-api.service';
+import {ApiService} from './api.service';
 import {DataTweets} from './datatweets.model';
+import {Enrichments} from './enrichments.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,15 +11,19 @@ import {DataTweets} from './datatweets.model';
 })
 export class DefaultLayoutComponent implements OnInit {
 
- constructor(private tweetsApi: DataTweetsApiService) {
+ constructor(private tweetsApi: ApiService) {
   }
-
+  
+  enrichmentsListSubs: Subscription;
   tweetsListSubs: Subscription;
+  enrichmentsList: any;
   tweetsList: DataTweets[];
-  tweetdeck: any
   public sidebarMinimized = false;
   public navItems = navItems;
-
+  jumlah_event : number;
+  jumlah_tempat : number;
+  jumlah_fasilitas : number;
+  jumlah_penyebab : number;
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   }
@@ -33,14 +38,16 @@ export class DefaultLayoutComponent implements OnInit {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: string[] = ['2017', '2018', '2019', '2020'];
   public barChartType = 'bar';
   public barChartLegend = false;
 
   public barChartData: any[] = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+    {data: [0, 0, 0, 81], label: 'Data status Macet'},
+    {data: [0, 0, 0, 19], label: 'Data status Padat'}
   ];
+
+
 
   ngOnInit() {
 
@@ -51,20 +58,65 @@ this.tweetsListSubs = this.tweetsApi
         },
         console.error
       );
- 
-  var data = {
-  "data_tweet" : [{ "type": "Feature", "properties": { "tweet": "Jl raya garut-bandung terjadi kemacetan d karenakan penumpukan kendaraan yg telah liburan dan perbaikan jalan tol d Cileunyi  @ClickBandung @infobandung #BesokSenin pictwittercom/PZiOTdpW98 – di Kawasan Industri Dwipapuri Abadi", "username": "@rudyromdiany", "time": "18:30" }},
-  { "type": "Feature", "properties": { "tweet": "Barangkali arah ke RSHS dari timur pas turunan fly over perempatan jl pasteur & jl cipaganti dstnya memang sering padat tersendat akibat volume kendaraan dan kebijakan satu arah..", "username": "@ikadarrusman","time": "17:52" }},
-  { "type": "Feature", "properties": { "tweet": "#BANDUNG #MACET Jl Bojongsoang - Jl Dayeuhkolot #PRFMBandung", "username": "@dimanamacetid","time": "16:40" }},
-  { "type": "Feature", "properties": { "tweet": "Hadew cancel gara2 telat jemput, jalannya dari Dago, cipaganti sampe Cihampelas macet… (at Eight Fully) [pic] —  https://pathcom/p/1LML8H ", "username": "@irwandh","time": "16:15" }},
-  ]
-  
+
+this.tweetsApi
+      .getEnrichments().subscribe((res) => {
+          this.enrichmentsList = res;
+            this.jumlah_event =  0;
+            this.jumlah_tempat = 0;
+            this.jumlah_fasilitas = 0;
+            this.jumlah_penyebab = 0;
+  for (var i = 0; i < this.enrichmentsList.length; i++) {
+  if ( this.enrichmentsList[i].atribut_event[0] == "NULL") {
+  this.jumlah_event = this.jumlah_event + 0;
+  }
+   if ( this.enrichmentsList[i].atribut_event[0] != "NULL") {
+  this.jumlah_event = this.jumlah_event + this.enrichmentsList[i].atribut_event.length
   }
 
-  this.tweetdeck = data.data_tweet;
+  }
+
+  for (var i = 0; i < this.enrichmentsList.length; i++) {
+  if ( this.enrichmentsList[i].atribut_tempat[0] == "NULL") {
+  this.jumlah_tempat = this.jumlah_tempat + 0;
+  }
+   if ( this.enrichmentsList[i].atribut_tempat[0] != "NULL") {
+  this.jumlah_tempat = this.jumlah_tempat + this.enrichmentsList[i].atribut_tempat.length
+  }
+
+  }
+
+  for (var i = 0; i < this.enrichmentsList.length; i++) {
+  if ( this.enrichmentsList[i].atribut_fasilitas[0] == "NULL") {
+  this.jumlah_fasilitas = this.jumlah_fasilitas + 0;
+  }
+   if ( this.enrichmentsList[i].atribut_fasilitas[0] != "NULL") {
+  this.jumlah_fasilitas = this.jumlah_fasilitas + this.enrichmentsList[i].atribut_fasilitas.length
+  }
+
+  }
+
+  for (var i = 0; i < this.enrichmentsList.length; i++) {
+  if ( this.enrichmentsList[i].atribut_penyebab[0] == "NULL") {
+  this.jumlah_penyebab = this.jumlah_penyebab + 0;
+  }
+   if ( this.enrichmentsList[i].atribut_penyebab[0] != "NULL") {
+  this.jumlah_penyebab = this.jumlah_penyebab + this.enrichmentsList[i].atribut_penyebab.length
+  }
+
+  }
+        }
+      ,
+        console.error
+      );
+
+ 
+
+
   }
 
   ngOnDestroy() {
     this.tweetsListSubs.unsubscribe();
+    this.enrichmentsListSubs.unsubscribe();
   }
 }
