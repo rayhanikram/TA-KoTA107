@@ -23,7 +23,7 @@ import { MapstreammerRoutingModule } from './mapstreammer-routing.module';
     ButtonsModule.forRoot(),
     CommonModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCwBolc5auzpYOhEjMPqM1bmwMoJfSlY_8'
+      apiKey: 'AIzaSyAzTivYAotoSAGbNuYGD4O8teFoxlgPmTg'
     })
   ],
   declarations: [ MapstreammerComponent ]
