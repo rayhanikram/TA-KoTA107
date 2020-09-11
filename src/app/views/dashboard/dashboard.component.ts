@@ -1,11 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import {Subscription} from 'rxjs/Subscription';
+import {ApiService} from '../../containers/default-layout/api.service';
+import {DataTweets} from '../../containers/default-layout/datatweets.model';
+import {Enrichments} from '../../containers/default-layout/enrichments.model';
 
 @Component({
   templateUrl: 'dashboard.component.html',
 })
 export class DashboardComponent implements OnInit {
+
+ constructor(private tweetsApi: ApiService) {
+  }
+  
+  enrichmentsListSubs: Subscription;
+  tweetsListSubs: Subscription;
+  enrichmentsList: any;
+  tweetsList: DataTweets[];
+  jumlah_event : number;
+  jumlah_tempat : number;
+  jumlah_fasilitas : number;
+  jumlah_penyebab : number;
+
 
   radioModel: string = 'Month';
 
@@ -339,5 +356,22 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
+
+    this.tweetsListSubs = this.tweetsApi
+      .getTweets()
+      .subscribe(res => {
+          this.tweetsList = res;
+        },
+        console.error
+      );
+
+        this.enrichmentsListSubs = this.tweetsApi
+      .getEnrichments()
+      .subscribe(res => {
+          this.enrichmentsList = res;
+        },
+        console.error
+      );
+
   }
 }

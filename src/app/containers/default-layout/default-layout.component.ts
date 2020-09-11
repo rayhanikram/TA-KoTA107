@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ApiService} from './api.service';
 import {DataTweets} from './datatweets.model';
 import {Enrichments} from './enrichments.model';
+import * as socketIo from "socket.io-client";
 
 @Component({
   selector: 'app-dashboard',
@@ -58,6 +59,8 @@ this.tweetsListSubs = this.tweetsApi
         },
         console.error
       );
+
+
 
 this.tweetsApi
       .getEnrichments().subscribe((res) => {
@@ -119,4 +122,5 @@ this.tweetsApi
     this.tweetsListSubs.unsubscribe();
     this.enrichmentsListSubs.unsubscribe();
   }
+
 }

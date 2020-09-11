@@ -16,17 +16,18 @@
      </agm-data-layer> -->
        <agm-marker 
       *ngFor="let g of geocode; let i = index"
+      animation="google.maps.Animation.BOUNCE"
       (markerClick)="clickedMarker(g.label, i)"
       [latitude]="g.lat"
       [longitude]="g.lon">
       
     <agm-info-window>
-      <strong>Tweet : {{g.data_text}}</strong>
-      <strong>Tanggal : {{g.atribut_tanggal}}</strong>
-      <strong>Waktu : {{g.atribut_waktu}}</strong>
-      <strong>Kejadian : {{g.atribut_event}}</strong>
-      <strong>Tempat : {{g.atribut_tempat}}</strong>
-      <strong>Fasilitas : {{g.atribut_fasilitas}}</strong>
+      <strong>Tweet : {{g.data_text}}</strong><br>
+      <strong>Tanggal : {{g.atribut_tanggal}}</strong><br>
+      <strong>Waktu : {{g.atribut_waktu}}</strong><br>
+      <strong>Kejadian : {{g.atribut_event}}</strong><br>
+      <strong>Tempat : {{g.atribut_tempat}}</strong><br>
+      <strong>Fasilitas : {{g.atribut_fasilitas}}</strong><br>
       <strong>Penyebab : {{g.atribut_penyebab}}</strong>
     </agm-info-window>
     

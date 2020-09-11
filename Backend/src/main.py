@@ -132,4 +132,3 @@ def add_enrichment():
     new_enrichment = EnrichmentSchema().dump(enrichment).data
     session.close()
     return jsonify(new_enrichment), 201
-

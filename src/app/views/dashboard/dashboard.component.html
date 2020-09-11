@@ -1,45 +1,5 @@
 <div class="animated fadeIn">
   <div class="row">
- <!--    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-info">
-        <div class="card-body pb-0">
-          <button type="button" class="btn btn-transparent p-0 float-right">
-            <i class="icon-location-pin"></i>
-          </button>
-          <div class="text-value">9.823</div>
-          <div>Data Postingan Kemacetan yang Berhasil Dikumpulkan</div>
-        </div>
-        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-          <canvas baseChart class="chart"
-          [datasets]="lineChart2Data"
-          [labels]="lineChart2Labels"
-          [options]="lineChart2Options"
-          [colors]="lineChart2Colours"
-          [legend]="lineChart2Legend"
-          [chartType]="lineChart2Type"></canvas>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-lg-3">
-      <div class="card text-white bg-primary">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown>
-          </div>
-          <div class="text-value">9.823</div>
-          <div>Data Postingan Kemacetan yang Berhasil Dideteksi</div>
-        </div>
-        <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
-          <canvas baseChart class="chart"
-                  [datasets]="lineChart1Data"
-                  [labels]="lineChart1Labels"
-                  [options]="lineChart1Options"
-                  [colors]="lineChart1Colours"
-                  [legend]="lineChart1Legend"
-                  [chartType]="lineChart1Type"></canvas>
-        </div>
-      </div>
-    </div> -->
-
 <div class="col-lg-6">
   <div class="card">
     <div class="card-header">
@@ -346,176 +306,28 @@
             </div><!--/.col-->
           </div><!--/.row-->
           <br>
-          <table class="table table-responsive-sm table-hover table-outline mb-0">
+          <table class="table table-responsive-sm table-hover table-outline mb-0" style="overflow-y:scroll;height:500px;display:block;">
             <thead class="thead-light">
               <tr>
-                <th class="text-center"><i class="icon-people"></i></th>
-                <th>User</th>
                 <th>Tweet</th>
                 <th class="text-center">Attribute from tweet</th>
                 <th>Post at</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody  *ngFor="let enrich of enrichmentsList; let i = index">
               <tr>
-                <td class="text-center">
-                  <div class="avatar">
-                    <img src="assets/img/avatars/1.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                    <span class="avatar-status badge-success"></span>
-                  </div>
-                </td>
+                <td>{{enrich.data_text}}</td>
                 <td>
-                  <div>Yiorgos Avraamu</div>
+                 <span class="badge badge-pill badge-primary" *ngIf="enrich.atribut_event != 'NULL'">
+                 {{enrich.atribut_event}}</span>
+                 <span class="badge badge-pill badge-secondary" *ngIf="enrich.atribut_fasilitas != 'NULL'">
+                 {{enrich.atribut_fasilitas}}</span>
+                 <span class="badge badge-pill badge-success" *ngIf="enrich.atribut_tempat != 'NULL'">
+                 {{enrich.atribut_tempat}}</span>
+                 <span class="badge badge-pill badge-danger" *ngIf="enrich.atribut_penyebab != 'NULL'">
+                 {{enrich.atribut_penyebab}}</span>
                 </td>
-                <td>
-                  07.47 WIB Arus lalu lintas di depan BTC Pasteur arah tol terpantau padat merayap. Harap bersabar dan tetap p..
-                </td>
-                <td>
-                 <span class="badge badge-pill badge-primary">07.47</span>
-                 <span class="badge badge-pill badge-secondary">BTC</span>
-                 <span class="badge badge-pill badge-success">Pasteur</span>
-                 <span class="badge badge-pill badge-danger">Padat</span>
-                </td>
-                <td>
-                  <div class="small text-muted">Last login</div>
-                  <strong>10 sec ago</strong>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <div class="avatar">
-                    <img src="assets/img/avatars/2.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                    <span class="avatar-status badge-danger"></span>
-                  </div>
-                </td>
-                <td>
-                  <div>Avram Tarasios</div>
-
-                </td>
-                <td>
-                 07.28 WIB Arus lalu lintas di Jl. Sukabumi arah Laswi terpantau lancar, dan Jl. Laswi arah Jl. Gatot Subroto terpantau ramai. Bias..
-                </td>
-                <td>
-                  <span class="badge badge-pill badge-primary">07.28</span>
-                 <span class="badge badge-pill badge-success">Jl.Sukabumi</span>
-                 <span class="badge badge-pill badge-success">Jl.Laswi</span>
-                 <span class="badge badge-pill badge-success">Jl. Gatot Subroto</span>
-                 <span class="badge badge-pill badge-danger">Macet</span>
-                </td>
-
-                <td>
-                  <div class="small text-muted">Last login</div>
-                  <strong>5 minutes ago</strong>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <div class="avatar">
-                    <img src="assets/img/avatars/3.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                    <span class="avatar-status badge-warning"></span>
-                  </div>
-                </td>
-                <td>
-                  <div>Quintin Ed</div>
-
-                </td>
-                <td>
-                 @PRFMnews , Kondisi perempatan jl. Dr. Djunjunan pukul 07.17, macet mulai dari turn fly over pasupati, karena banyak antrian mobil masuk ke salahsatu sekolahan di Dr.junjunan..
-
-                </td>
-                <td>
-                  <span class="badge badge-pill badge-primary">07.17</span>
-                 <span class="badge badge-pill badge-success">jl. Dr. Djunjunan</span>
-                 <span class="badge badge-pill badge-secondary">flyover pasupati</span>
-                 <span class="badge badge-pill badge-warning">banyak antrian mobil</span>
-                 <span class="badge badge-pill badge-danger">Macet</span>
-                </td>
-
-                <td>
-                  <div class="small text-muted">Last login</div>
-                  <strong>1 hour ago</strong>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <div class="avatar">
-                    <img src="assets/img/avatars/4.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                    <span class="avatar-status badge-secondary"></span>
-                  </div>
-                </td>
-                <td>
-                  <div>Enéas Kwadwo</div>
-
-                </td>
-                <td>
-                  07.10 RT @Gilang79: MTC arah kircon macet sejak pintu timur MTC  pic.twitter.com/PYG2CgdKB3
-
-                </td>
-                <td>
-                <span class="badge badge-pill badge-primary">07.10</span>
-                 <span class="badge badge-pill badge-success">kircon</span>
-                 <span class="badge badge-pill badge-secondary">MTC</span>
-                 <span class="badge badge-pill badge-danger">Macet</span>
-                </td>
-
-                <td>
-                  <div class="small text-muted">Last login</div>
-                  <strong>Last month</strong>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <div class="avatar">
-                    <img src="assets/img/avatars/5.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                    <span class="avatar-status badge-success"></span>
-                  </div>
-                </td>
-                <td>
-                  <div>Agapetus Tadeáš</div>
-
-                </td>
-                <td class="text-center">
-                 Jl raya garut-bandung terjadi kemacetan d karenakan penumpukan kendaraan yg telah liburan dan perbaikan jalan tol d Cileunyi
-                </td>
-                <td>
-                 <span class="badge badge-pill badge-success">Jl raya garut-bandung</span>
-                 <span class="badge badge-pill badge-secondary">flyover pasupati</span>
-                 <span class="badge badge-pill badge-warning">perbaikan jalan</span>
-                 <span class="badge badge-pill badge-warning">penumpukan kendaraan</span>
-                 <span class="badge badge-pill badge-danger">Macet</span>
-                </td>
-
-                <td>
-                  <div class="small text-muted">Last login</div>
-                  <strong>Last week</strong>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center">
-                  <div class="avatar">
-                    <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com">
-                    <span class="avatar-status badge-danger"></span>
-                  </div>
-                </td>
-                <td>
-                  <div>Friderik Dávid</div>
-
-                </td>
-                <td class="text-center">
-                  #lalinBDG 20.24 : Jl PHH Mustofa arah Gasibu macet parah, cuman gara2 mobil2 motong dari SukaSenangRaya depan Ampera
-                </td>
-                <td>
-                  <span class="badge badge-pill badge-primary">20.24</span>
-                 <span class="badge badge-pill badge-success">Jl PHH Mustofa</span>
-                 <span class="badge badge-pill badge-secondary">Gasibu</span>
-                 <span class="badge badge-pill badge-warning">mobil2 motong</span>
-                 <span class="badge badge-pill badge-danger">Macet</span>
-                </td>
-
-                <td>
-                  <div class="small text-muted">Last login</div>
-                  <strong>Yesterday</strong>
-                </td>
+                <td>{{enrich.atribut_tanggal}} {{enrich.atribut_waktu}}</td>
               </tr>
             </tbody>
           </table>

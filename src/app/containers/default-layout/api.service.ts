@@ -26,4 +26,8 @@ getEnrichments(): Observable<Enrichments[]>{
     return this.http.get<Enrichments[]>(`${API_URL}/enrichments`);
  }
 
+ getStream(): Observable<string>{
+    return this.http.get<string>(`${API_URL}/enrichments`);
+ }
+
 }
