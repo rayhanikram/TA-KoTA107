@@ -18,19 +18,22 @@ class Geocode(Entity, Base):
     address = Column(String)
     lat= Column(Float)
     lon= Column(Float)
+    kecamatan= Column(String)
     
-    def __init__(self,place_id, atribute_tempat_fasilitas, address, lat, lon, created_by):
+    def __init__(self,place_id, atribute_tempat_fasilitas, address, lat, lon, kecamatan, created_by):
         Entity.__init__(self, created_by)
         self.place_id = place_id
         self.address = address
         self.atribute_tempat_fasilitas = atribute_tempat_fasilitas
         self.lat = lat
         self.lon = lon
+        self.kecamatan = kecamatan
 
 
 class GeocodeSchema(Schema):
 
     atribute_tempat_fasilitas= fields.Str()
+    address= fields.Str()
     lat= fields.Number()
     lon= fields.Number()
-    address= fields.Str()
+    kecamatan= fields.Str()

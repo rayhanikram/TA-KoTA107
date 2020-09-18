@@ -12,6 +12,12 @@ export const navItems: INavData[] = [
     url: '/mapstreammer',
     icon: 'icon-map',
 
+  },
+  {
+    name: 'Map Summarize',
+    url: '/mapsummarize',
+    icon: 'icon-pin',
+
   }
  
 ];

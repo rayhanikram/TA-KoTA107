@@ -1,0 +1,436 @@
+<!-- 
+<div class="map-container">
+  <div class="map-frame">
+    <div id="map"></div>
+  </div>
+</div>
+ -->
+
+
+
+  <div class="card" >
+    <div class="card-img-top">
+<form action="#">
+  GeoJSON: <input type="checkbox"  (change)="FieldsChange($event)" value="angular" />
+  All Data: <input type="checkbox"  (change)="MarkerallChange($event)" />
+  Data dengan Penyebab: <input type="checkbox"  (change)="PenyebabChange($event)" /> 
+  KlasifikasiData: <input type="checkbox"  onclick="boxclick(this,'shop')" />
+<br />
+</form>
+           <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+<div *ngIf="check_GeoJSON">
+       <agm-data-layer  *ngIf="Sukasari == 0"[geoJson]="SukasariObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >   
+     </agm-data-layer>
+     	 <agm-data-layer  *ngIf="Sukasari >= 1 && Sukasari < 30"[geoJson]="SukasariObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer  *ngIf="Sukajadi == 0"[geoJson]="SukajadiObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >   
+     </agm-data-layer>
+       <agm-data-layer  *ngIf="Sukajadi >= 1 && Sukajadi < 30"[geoJson]="SukajadiObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+         <agm-data-layer  *ngIf="Babakan_Ciparay == 0"[geoJson]="CiparayObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >   
+     </agm-data-layer>
+       <agm-data-layer  *ngIf="Babakan_Ciparay >= 1 && Babakan_Ciparay < 30"[geoJson]="CiparayObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+      <agm-data-layer  *ngIf="Bojongloa_Kaler == 0"[geoJson]="BojongloaKalerObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >   
+     </agm-data-layer>
+       <agm-data-layer  *ngIf="Bojongloa_Kaler >= 1 && Bojongloa_Kaler < 30"[geoJson]="BojongloaKalerObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Coblong == 0" [geoJson]="CoblongObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Coblong >= 1 && Coblong < 30"[geoJson]="CoblongObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Andir == 0" [geoJson]="AndirObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+      </agm-data-layer>
+      <agm-data-layer  *ngIf="Andir >= 1 && Andir < 30"[geoJson]="AndirObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Bandung_Wetan == 0" [geoJson]="BandungWetanObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Bandung_Wetan >= 1 && Bandung_Wetan < 30"[geoJson]="BandungWetanObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Astana_Anyar == 0" [geoJson]="AstanaanyarObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Astana_Anyar >= 1 && Astana_Anyar < 30"[geoJson]="AstanaanyarObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Regol == 0" [geoJson]="RegolObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Regol >= 1 && Regol < 30"[geoJson]="RegolObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Lengkong == 0" [geoJson]="LengkongObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Lengkong >= 1 && Lengkong < 30"[geoJson]="LengkongObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Cibeunying_Kidul == 0" [geoJson]="CibeunyingKidulObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Cibeunying_Kidul >= 1 && Cibeunying_Kidul < 30"[geoJson]="CibeunyingKidulObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Bandung_Kulon == 0" [geoJson]="BandungKulonObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Bandung_Kulon >= 1 && Bandung_Kulon < 30"[geoJson]="BandungKulonObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Kiara_Condong == 0" [geoJson]="KiaracondongObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Kiara_Condong >= 1 && Kiara_Condong < 30"[geoJson]="KiaracondongObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Bojongloa_Kidul == 0" [geoJson]="BojongloaKidulObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Bojongloa_Kidul >= 1 && Bojongloa_Kidul < 30"[geoJson]="BojongloaKidulObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+       <agm-data-layer *ngIf="Cibeunying_Kaler == 0" [geoJson]="CibeunyingKalerObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+       <agm-data-layer *ngIf="Cibeunying_Kaler >= 1 && Cibeunying_Kaler < 30" [geoJson]="CibeunyingKalerObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >    
+     </agm-data-layer>
+         <agm-data-layer  *ngIf="Batununggal == 0"[geoJson]="BatununggalObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >   
+     </agm-data-layer>
+       <agm-data-layer  *ngIf="Batununggal >= 1 && Batununggal < 30"[geoJson]="BatununggalObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" >
+    </agm-data-layer>
+       <agm-data-layer  *ngIf="Cicendo == 0"[geoJson]="CicendoObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >   
+     </agm-data-layer>
+       <agm-data-layer  *ngIf="Cicendo >= 1 && Cicendo < 30"[geoJson]="CicendoObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" >
+    </agm-data-layer>
+       <agm-data-layer  *ngIf="Antapani == 0"[geoJson]="AntapaniObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >   
+     </agm-data-layer>
+       <agm-data-layer  *ngIf="Antapani >= 1 && Antapani < 30"[geoJson]="AntapaniObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" >
+    </agm-data-layer>
+       <agm-data-layer  *ngIf="Buahbatu == 0"[geoJson]="BuahbatuObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >   
+     </agm-data-layer>
+       <agm-data-layer  *ngIf="Buahbatu >= 1 && Buahbatu < 30"[geoJson]="BuahbatuObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" >
+    </agm-data-layer>
+     <agm-data-layer  *ngIf="Cidadap == 0"[geoJson]="CidadapObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >   
+     </agm-data-layer>
+       <agm-data-layer  *ngIf="Cidadap >= 1 && Cidadap < 30"[geoJson]="CidadapObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" >
+    </agm-data-layer>
+       <agm-data-layer *ngIf="Sumur_Bandung == 0" [geoJson]="SumurBandungObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Sumur_Bandung >= 1 && Sumur_Bandung < 30"[geoJson]="SumurBandungObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+         <agm-data-layer *ngIf="Bandung_Kidul == 0" [geoJson]="BandungKidulObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Bandung_Kidul >= 1 && Bandung_Kidul < 30"[geoJson]="BandungKidulObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+         <agm-data-layer *ngIf="Rancasari == 0" [geoJson]="RancasariObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Rancasari >= 1 && Rancasari < 30"[geoJson]="RancasariObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+         <agm-data-layer *ngIf="Arcamanik == 0" [geoJson]="ArcamanikObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Arcamanik >= 1 && Arcamanik < 30"[geoJson]="ArcamanikObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+         <agm-data-layer *ngIf="Cibiru == 0" [geoJson]="CibiruObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Cibiru >= 1 && Cibiru < 30"[geoJson]="CibiruObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+         <agm-data-layer *ngIf="Ujung_Berung == 0" [geoJson]="UjungberungObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Ujung_Berung >= 1 && Ujung_Berung < 30"[geoJson]="UjungberungObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+         <agm-data-layer *ngIf="Gedebage == 0" [geoJson]="GedebageObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Gedebage >= 1 && Gedebage < 30"[geoJson]="GedebageObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+     <agm-data-layer *ngIf="Panyileukan == 0" [geoJson]="PanyileukanObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Panyileukan >= 1 && Panyileukan < 30"[geoJson]="PanyileukanObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+     <agm-data-layer *ngIf="Mandalajati == 0" [geoJson]="MandalajatiObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Mandalajati >= 1 && Mandalajati < 30"[geoJson]="MandalajatiObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+     <agm-data-layer *ngIf="Cinambo == 0" [geoJson]="CinamboObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#008000',
+      strokeColor: '#008000',
+      strokeWeight: 1
+    }" >
+         </agm-data-layer>
+      <agm-data-layer  *ngIf="Cinambo >= 1 && Cinambo < 30"[geoJson]="CinamboObject" (layerClick)="clicked($event)" [style]="{
+      fillColor: '#A4C639',
+      strokeColor: '#A4C639',
+      strokeWeight: 1
+    }" > 
+     </agm-data-layer>
+</div>
+
+<div *ngIf="check_Markerall">
+  <agm-marker-cluster imagePath="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m">
+ 
+       <agm-marker 
+      *ngFor="let g of geocode; let i = index"
+      (markerClick)="clickedMarker(g.label, i)"
+      [latitude]="g.lat"
+      [longitude]="g.lon">
+
+      
+    <agm-info-window>
+      <strong>Tweet : {{g.data_text}}</strong><br>
+      <strong>Tanggal : {{g.atribut_tanggal}}</strong><br>
+      <strong>Waktu : {{g.atribut_waktu}}</strong><br>
+      <strong>Kejadian : {{g.atribut_event}}</strong><br>
+      <strong>Tempat : {{g.atribut_tempat}}</strong><br>
+      <strong>Fasilitas : {{g.atribut_fasilitas}}</strong><br>
+      <strong>Penyebab : {{g.atribut_penyebab}}</strong><br>
+    </agm-info-window>
+    
+       </agm-marker>
+   </agm-marker-cluster>
+  </div>
+
+  <div *ngIf="check_Penyebab">
+  <agm-marker-cluster imagePath="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m">
+       <div *ngFor="let g of geocode; let i = index">  
+
+       <agm-marker 
+       *ngIf="g.atribut_penyebab[0] != 'NULL'"
+      (markerClick)="clickedMarker(g.label, i)"
+      [latitude]="g.lat"
+      [longitude]="g.lon">
+
+      
+    <agm-info-window>
+      <strong>Tweet : {{g.data_text}}</strong><br>
+      <strong>Tanggal : {{g.atribut_tanggal}}</strong><br>
+      <strong>Waktu : {{g.atribut_waktu}}</strong><br>
+      <strong>Kejadian : {{g.atribut_event}}</strong><br>
+      <strong>Tempat : {{g.atribut_tempat}}</strong><br>
+      <strong>Fasilitas : {{g.atribut_fasilitas}}</strong><br>
+      <strong>Penyebab : {{g.atribut_penyebab}}</strong><br>
+    </agm-info-window>
+    
+       </agm-marker>
+       </div>
+   </agm-marker-cluster>
+  </div>
+
+  </agm-map>
+    </div>
+  </div>

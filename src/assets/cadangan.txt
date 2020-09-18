@@ -1,0 +1,57 @@
+    this._bandungDataService.getCoblongGeoJson()
+      .subscribe(resGeoJsonData => this.CoblongObject = resGeoJsonData);
+    this._bandungDataService.getCiparayGeoJson()
+      .subscribe(resGeoJsonData => this.CiparayObject = resGeoJsonData);
+    this._bandungDataService.getBojongloaKalerGeoJson()
+      .subscribe(resGeoJsonData => this.BojongloaKalerObject = resGeoJsonData);
+    this._bandungDataService.getAndirGeoJson()
+      .subscribe(resGeoJsonData => this.AndirObject = resGeoJsonData);
+    this._bandungDataService.getCicendoGeoJson()
+      .subscribe(resGeoJsonData => this.CicendoObject = resGeoJsonData);
+    this._bandungDataService.getSukajadiGeoJson()
+      .subscribe(resGeoJsonData => this.SukajadiObject = resGeoJsonData);
+    this._bandungDataService.getCidadapGeoJson()
+      .subscribe(resGeoJsonData => this.CidadapObject = resGeoJsonData);
+    this._bandungDataService.getAstanaanyarGeoJson()
+      .subscribe(resGeoJsonData => this.AstanaanyarObject = resGeoJsonData);
+    this._bandungDataService.getRegolGeoJson()
+      .subscribe(resGeoJsonData => this.RegolObject = resGeoJsonData);
+    this._bandungDataService.getBatununggalGeoJson()
+      .subscribe(resGeoJsonData => this.BatununggalObject = resGeoJsonData);
+    this._bandungDataService.getLengkongGeoJson()
+      .subscribe(resGeoJsonData => this.LengkongObject = resGeoJsonData);
+    this._bandungDataService.getCibeunyingKidulGeoJson()
+      .subscribe(resGeoJsonData => this.CibeunyingKidulObject = resGeoJsonData);
+    this._bandungDataService.getBandungKulonGeoJson()
+      .subscribe(resGeoJsonData => this.BandungKulonObject = resGeoJsonData);
+    this._bandungDataService.getKiaracondongGeoJson()
+      .subscribe(resGeoJsonData => this.KiaracondongObject = resGeoJsonData);
+    this._bandungDataService.getBojongloaKidulGeoJson()
+      .subscribe(resGeoJsonData => this.BojongloaKidulObject = resGeoJsonData);
+    this._bandungDataService.getCibeunyingKalerGeoJson()
+      .subscribe(resGeoJsonData => this.CibeunyingKalerObject = resGeoJsonData);
+    this._bandungDataService.getSumurBandungGeoJson()
+      .subscribe(resGeoJsonData => this.SumurBandungObject = resGeoJsonData);
+    this._bandungDataService.getAntapaniGeoJson()
+      .subscribe(resGeoJsonData => this.AntapaniObject = resGeoJsonData);
+    this._bandungDataService.getBandungKidulGeoJson()
+      .subscribe(resGeoJsonData => this.BandungKidulObject = resGeoJsonData);
+    this._bandungDataService.getBuahbatuGeoJson()
+      .subscribe(resGeoJsonData => this.BuahbatuObject = resGeoJsonData);
+    this._bandungDataService.getRancasariGeoJson()
+      .subscribe(resGeoJsonData => this.RancasariObject = resGeoJsonData);
+    this._bandungDataService.getArcamanikGeoJson()
+      .subscribe(resGeoJsonData => this.ArcamanikObject = resGeoJsonData);
+    this._bandungDataService.getCibiruGeoJson()
+      .subscribe(resGeoJsonData => this.CibiruObject = resGeoJsonData);
+    this._bandungDataService.getUjungberungGeoJson()
+      .subscribe(resGeoJsonData => this.UjungberungObject = resGeoJsonData);
+    this._bandungDataService.getGedebageGeoJson()
+      .subscribe(resGeoJsonData => this.GedebageObject = resGeoJsonData);
+    this._bandungDataService.getPanyileukanGeoJson()
+      .subscribe(resGeoJsonData => this.PanyileukanObject = resGeoJsonData);
+    this._bandungDataService.getMandalajatiGeoJson()
+      .subscribe(resGeoJsonData => this.MandalajatiObject = resGeoJsonData);
+    this._bandungDataService.getCinamboGeoJson()
+      .subscribe(resGeoJsonData => this.CinamboObject = resGeoJsonData);
+

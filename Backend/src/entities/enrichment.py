@@ -40,6 +40,7 @@ class EnrichmentSchema(Schema):
     atribute_tempat_fasilitas= fields.Str()
     lat= fields.Number()
     lon= fields.Number()
+    kecamatan= fields.Str()
     address= fields.Str()
     data_text = fields.Str()
     atribut_event = fields.List(fields.Str())

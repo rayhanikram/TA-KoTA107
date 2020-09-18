@@ -9,6 +9,7 @@ export class GeocodeResponse {
   public atribut_fasilitas: string[],
   public atribut_penyebab: string[],
   public lat: number,
-  public lon: number
+  public lon: number,
+  public kecamatan: string
 ){}
 }

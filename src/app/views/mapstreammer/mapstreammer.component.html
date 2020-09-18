@@ -11,9 +11,7 @@
     <div class="card-img-top">
     	<div class="map"></div>
      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-<!--      	 <agm-data-layer  [geoJson]="geoJsonObject" (layerClick)="clicked($event)" [style]="styleFunc" >
-          
-     </agm-data-layer> -->
+
        <agm-marker 
       *ngFor="let g of geocode; let i = index"
       animation="google.maps.Animation.BOUNCE"

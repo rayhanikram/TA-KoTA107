@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import { GeocodeConfig } from "./geocode.config";
 import { GeocodeResponse } from "./geocode.response";
 import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/toPromise';
 
 @Injectable({
     providedIn: 'root'
@@ -21,6 +22,12 @@ export class NominatimService {
 
   getLocation(): Observable<GeocodeResponse[]> {
     return this.http.get<GeocodeResponse[]>(`http://0.0.0.0:5000/enrichments/tempat`).catch(NominatimService._handleError);
+  }
+
+async getJsonColor() {
+    var result = await this.http.get<GeocodeResponse[]>(`http://0.0.0.0:5000/enrichments/tempat`).toPromise();
+
+    return result;
   }
 
 }

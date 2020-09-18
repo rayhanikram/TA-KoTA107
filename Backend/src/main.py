@@ -66,7 +66,7 @@ def get_enrichments_tempat():
     # fetching from the database
     session = Session()
     enrichment_objects_tempat = session.query(Enrichment,Geocode).filter(
-         or_(Enrichment.atribut_tempat[1] == Geocode.atribute_tempat_fasilitas, Enrichment.atribut_tempat[2] == Geocode.atribute_tempat_fasilitas, Enrichment.atribut_fasilitas[1] == Geocode.atribute_tempat_fasilitas) ).with_entities(Enrichment.data_text,Enrichment.atribut_event,Enrichment.atribut_tempat,Enrichment.atribut_tanggal,Enrichment.atribut_waktu,Enrichment.atribut_fasilitas,Enrichment.atribut_penyebab,Geocode.lat,Geocode.lon)
+         or_(Enrichment.atribut_tempat[3] == Geocode.atribute_tempat_fasilitas,Enrichment.atribut_tempat[1] == Geocode.atribute_tempat_fasilitas, Enrichment.atribut_tempat[2] == Geocode.atribute_tempat_fasilitas, Enrichment.atribut_fasilitas[1] == Geocode.atribute_tempat_fasilitas) ).with_entities(Enrichment.data_text,Enrichment.atribut_event,Enrichment.atribut_tempat,Enrichment.atribut_tanggal,Enrichment.atribut_waktu,Enrichment.atribut_fasilitas,Enrichment.atribut_penyebab,Geocode.kecamatan,Geocode.lat,Geocode.lon)
 
     # transforming into JSON-serializable objects
     schema = EnrichmentSchema(many=True)

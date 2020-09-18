@@ -71,20 +71,8 @@ export const routes: Routes = [
         loadChildren: () => import('./views/mapstreammer/mapstreammer.module').then(m => m.MapstreammerModule)
       },
       {
-        path: 'icons',
-        loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
-      },
-      {
-        path: 'notifications',
-        loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
-      },
-      {
-        path: 'theme',
-        loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
-      },
-      {
-        path: 'widgets',
-        loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
+        path: 'mapsummarize',
+        loadChildren: () => import('./views/mapsummarize/mapsummarize.module').then(m => m.MapsummarizeModule)
       }
     ]
   },
