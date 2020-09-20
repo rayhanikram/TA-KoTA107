@@ -21,7 +21,7 @@ Kecamatan= None
 
 loc = [...]*len(df)
 def GeocodePY(i):
- locator = GoogleV3(api_key='AIzaSyAVrV_E0qgmnH30D5pfZ4j5LXpuESZfkTU')
+ locator = GoogleV3(api_key='Hello World')
  loc= df.loc[i,'Address']
  location = locator.geocode(loc,bounds=[-7.032068,107.534180,-6.848032,107.745323])
  try:
