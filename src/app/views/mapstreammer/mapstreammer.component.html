@@ -13,7 +13,7 @@
      <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
 
        <agm-marker 
-      *ngFor="let g of geocode; let i = index"
+      *ngFor="let g of geocode | slice:0:100; let i = index "
       animation="google.maps.Animation.BOUNCE"
       (markerClick)="clickedMarker(g.label, i)"
       [latitude]="g.lat"

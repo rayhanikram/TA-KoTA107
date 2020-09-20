@@ -9,7 +9,7 @@ Base.metadata.create_all(engine)
 
 session = Session()
 r = requests.get('http://0.0.0.0:5000/enrichments/tempat').json()
-df=pd.DataFrame({'Address':['Kopo','Lengkong','Ciparay','rancaekek','Batu Datar','jl. Dr. Djunjunan','kircon','gedebage','Jl raya garut','Jl Cileunyi','cileunyi','baron','ciumbuleit','Jl. Muh. Toha.','tomo','leles','cisarua','jagorawi','ring road','stasiun cimekar','Kawasan Industri Dwipapuri Abadi','fly over paspati','MTC','stasiun cimekar']}) 
+df=pd.DataFrame({'Address':['Cimareme','Tengku','Cikole','Cisaat','Karawang','paskum-lapang','pasirkoja','cileungsi','Sukaraja','cigending','jltaman','tamsar-dago','cipatat','ujungberung','ciparay','Sumatera','bulog','cimangkok']}) 
         
 Latitude= None
 Longitude= None
@@ -17,11 +17,11 @@ Place_id= None
 Atribute_tempat_fasilitas= None
 Address= None
 Kecamatan= None
-
+#
 
 loc = [...]*len(df)
 def GeocodePY(i):
- locator = GoogleV3(api_key='Hello World')
+ locator = GoogleV3(api_key='AIzaSyAVrV_E0qgmnH30D5pfZ4j5LXpuESZfkTU')
  loc= df.loc[i,'Address']
  location = locator.geocode(loc,bounds=[-7.032068,107.534180,-6.848032,107.745323])
  try:

@@ -4,6 +4,7 @@ from .entities.entity import Session, engine, Base
 from .entities.data_tweet import Data_tweet, Data_tweetSchema
 from .entities.geocode import Geocode, GeocodeSchema
 from .entities.enrichment import Enrichment, EnrichmentSchema
+from .entities.text_classification import TextClassification, TextClassificationSchema
 from flask_cors import CORS
 from sqlalchemy import or_
 
@@ -75,6 +76,20 @@ def get_enrichments_tempat():
     # serializing as JSON
     session.close()
     return jsonify(enrichment_tempat)
+
+@app.route('/classification')
+def get_text_classification():
+    # fetching from the database
+    session = Session()
+    text_classification_objects = session.query(TextClassification,Geocode).filter(or_(TextClassification.atribut_tempat[1] == Geocode.atribute_tempat_fasilitas,TextClassification.atribut_fasilitas[1] == Geocode.atribute_tempat_fasilitas)).with_entities(TextClassification.data_text,TextClassification.atribut_event,TextClassification.atribut_tempat,TextClassification.atribut_tanggal,TextClassification.atribut_waktu,TextClassification.atribut_fasilitas,TextClassification.atribut_penyebab,Geocode.kecamatan,Geocode.lat,Geocode.lon)
+
+    # transforming into JSON-serializable objects
+    schema = TextClassificationSchema(many=True)
+    text_classification2 = schema.dump(text_classification_objects)
+
+    # serializing as JSON
+    session.close()
+    return jsonify(text_classification2)
 
 
 @app.route('/data_tweets', methods=['POST'])

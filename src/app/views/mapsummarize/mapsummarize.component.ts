@@ -4,6 +4,7 @@ import { MapsAPILoader } from '@agm/core';
 import { BandungDataService } from "../mapstreammer/bandungdata.service";
 import { NominatimService } from '../mapstreammer/nominatim.service';
 import { GeocodeResponse } from "../mapstreammer/geocode.response";
+import { ClassificationResponse } from "../mapstreammer/classification.response";
 import {Subscription} from 'rxjs/Subscription';
 declare let L;
 import 'leaflet';
@@ -24,6 +25,7 @@ export class MapsummarizeComponent {
  check_GeoJSON: boolean= false;
  check_Markerall: boolean= false;
  check_Penyebab: boolean= false;
+ check_Classification: boolean= false;
   title: string = 'Peta Mapsummarize';
   lat: number = -6.914744;
   lng: number = 107.609810;
@@ -61,6 +63,7 @@ export class MapsummarizeComponent {
   CinamboObject: any;
   geocodeSubs: Subscription;
   geocode: any;
+  classification: any;
   map: any;
   Andir: number;
   Antapani: number;
@@ -109,6 +112,10 @@ MarkerallChange(values:any){
 
 PenyebabChange(values:any){
   this.check_Penyebab = values.currentTarget.checked;
+}
+
+ClassificationChange(values:any){
+  this.check_Classification = values.currentTarget.checked;
 }
 
    buildMap() {
@@ -181,6 +188,13 @@ PenyebabChange(values:any){
       .subscribe(resGeoJsonData => this.MandalajatiObject = resGeoJsonData);
     this._bandungDataService.getCinamboGeoJson()
       .subscribe(resGeoJsonData => this.CinamboObject = resGeoJsonData);
+
+ this.nominatim
+      .getClassification()
+      .subscribe((res) => {
+          this.classification = res;
+      },
+        console.error);
 
  this.nominatim
       .getLocation()
@@ -329,8 +343,8 @@ PenyebabChange(values:any){
   styleFunc(feature: any): any {
     
     return {
-      fillColor: '#A4C639',
-      strokeColor: '#A4C639',
+      fillColor: '#FFBF00',
+      strokeColor: '#FFBF00',
       strokeWeight: 1
     };
   }

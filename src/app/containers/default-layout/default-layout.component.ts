@@ -18,7 +18,7 @@ export class DefaultLayoutComponent implements OnInit {
   enrichmentsListSubs: Subscription;
   tweetsListSubs: Subscription;
   enrichmentsList: any;
-  tweetsList: DataTweets[];
+  tweetsList: Enrichments[];
   public sidebarMinimized = false;
   public navItems = navItems;
   jumlah_event : number;
@@ -53,7 +53,7 @@ export class DefaultLayoutComponent implements OnInit {
   ngOnInit() {
 
 this.tweetsListSubs = this.tweetsApi
-      .getTweets()
+      .getEnrichments()
       .subscribe(res => {
           this.tweetsList = res;
         },
@@ -90,7 +90,7 @@ this.tweetsApi
   }
 
   for (var i = 0; i < this.enrichmentsList.length; i++) {
-  if ( this.enrichmentsList[i].atribut_fasilitas[0] == "NULL") {
+  if ( this.enrichmentsList[i].atribut_fasilitas[0] == "NULL" || this.enrichmentsList[i].atribut_fasilitas[0] == null ) {
   this.jumlah_fasilitas = this.jumlah_fasilitas + 0;
   }
    if ( this.enrichmentsList[i].atribut_fasilitas[0] != "NULL") {
