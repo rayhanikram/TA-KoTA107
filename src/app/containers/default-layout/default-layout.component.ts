@@ -44,8 +44,8 @@ export class DefaultLayoutComponent implements OnInit {
   public barChartLegend = false;
 
   public barChartData: any[] = [
-    {data: [0, 0, 0, 81], label: 'Data status Macet'},
-    {data: [0, 0, 0, 19], label: 'Data status Padat'}
+    {data: [180, 230, 300, 81], label: 'Data status Macet'},
+    {data: [58, 77, 120, 19], label: 'Data status Padat'}
   ];
 
 

@@ -4,9 +4,10 @@ from .entities.entity import Session, engine, Base
 from .entities.data_tweet import Data_tweet, Data_tweetSchema
 from .entities.geocode import Geocode, GeocodeSchema
 from .entities.enrichment import Enrichment, EnrichmentSchema
+from .entities.rekapitulasi import Rekapitulasi, RekapitulasiSchema
 from .entities.text_classification import TextClassification, TextClassificationSchema
 from flask_cors import CORS
-from sqlalchemy import or_
+from sqlalchemy import or_,desc
 
 
 
@@ -52,7 +53,7 @@ def get_geocodes():
 def get_enrichments():
     # fetching from the database
     session = Session()
-    enrichment_objects = session.query(Enrichment).all()
+    enrichment_objects = session.query(Enrichment).order_by(Enrichment.atribut_waktu.desc(),Enrichment.atribut_tanggal.desc()).all()
 
     # transforming into JSON-serializable objects
     schema = EnrichmentSchema(many=True)
@@ -61,6 +62,22 @@ def get_enrichments():
     # serializing as JSON
     session.close()
     return jsonify(enrichment2)
+
+
+@app.route('/rekapitulasi')
+def get_rekapitulasi():
+    # fetching from the database
+    session = Session()
+    rekapitulasi_objects = session.query(Rekapitulasi).order_by(Rekapitulasi.id).all()
+
+    # transforming into JSON-serializable objects
+    schema = RekapitulasiSchema(many=True)
+    rekapitulasi2 = schema.dump(rekapitulasi_objects)
+
+    # serializing as JSON
+    session.close()
+    return jsonify(rekapitulasi2)
+
 
 @app.route('/enrichments/tempat')
 def get_enrichments_tempat():

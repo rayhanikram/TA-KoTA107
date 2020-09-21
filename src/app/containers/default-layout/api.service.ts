@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import {API_URL} from '../../env';
 import {DataTweets} from './datatweets.model';
 import {Enrichments} from './enrichments.model';
+import {Rekapitulasi} from './rekapitulasi.model';
 
 
 @Injectable()
@@ -28,6 +29,10 @@ getEnrichments(): Observable<Enrichments[]>{
 
  getStream(): Observable<string>{
     return this.http.get<string>(`${API_URL}/enrichments`);
+ }
+
+  getRekap(): Observable<Rekapitulasi[]>{
+    return this.http.get<Rekapitulasi[]>(`${API_URL}/rekapitulasi`);
  }
 
 }
