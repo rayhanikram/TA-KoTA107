@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
  constructor(private tweetsApi: ApiService) {
   }
   
-  year: number = 2020;
+  year: number = 2099;
   enrichmentsListSubs: Subscription;
   tweetsListSubs: Subscription;
   enrichmentsList: any;
@@ -39,6 +39,9 @@ to2019(value: any){
 }
 to2020(value: any){
   this.year = 2020;
+}
+to2099(value: any){
+  this.year = 2099;
 }
 
   /* tslint:enable:max-line-length */
@@ -91,6 +94,8 @@ to2020(value: any){
       display: false
     }
   };
+
+
   public mainChartColours: Array<any> = [
     { // brandInfo
       backgroundColor: hexToRgba(getStyle('--info'), 10),
@@ -102,9 +107,6 @@ to2020(value: any){
   public mainChartType = 'line';
 
     public radarChartType = 'radar';
-
-    public pieChartLabels: string[] = ['Pasteur', 'Kiaracondong', 'Riau'];
-    public pieChartData: number[] = [300, 500, 100];
     public pieChartType = 'pie';
 
   // events
@@ -137,8 +139,26 @@ to2020(value: any){
 
         this.enrichmentsListSubs = this.tweetsApi
       .getEnrichments()
-      .subscribe(res => {
+      .subscribe((res) => {
           this.enrichmentsList = res;
+          this.jumlah_event = 0;
+          this.jumlah_tempat = 0;
+          this.jumlah_fasilitas = 0;
+          this.jumlah_penyebab = 0;
+//          for(var i; i =< this.tweetsList.length; i++){
+//            if(this.tweetsList[i].){
+//
+//            }
+//            if(this.tweetsList[i].){
+              
+//            }
+//            if(this.tweetsList[i].){
+              
+//            }
+//            if(this.tweetsList[i].){
+              
+//            }
+//          }
         },
         console.error
       );

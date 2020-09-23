@@ -279,7 +279,7 @@ ClassificationChange(values:any){
           if(this.geocode[i].kecamatan == "Sukajadi" || this.geocode[i].kecamatan == "Kecamatan Sukajadi"){
                    this.Sukajadi = this.Sukajadi + 1;
           }
-          if(this.geocode[i].kecamatan == "Sumurbandung" || this.geocode[i].kecamatan == "Kecamatan Sumurbandung"){
+          if(this.geocode[i].kecamatan == "Sumur Bandung" || this.geocode[i].kecamatan == "Kecamatan Sumur Bandung"){
                    this.Sumur_Bandung = this.Sumur_Bandung + 1;
           }
           if(this.geocode[i].kecamatan == "Ujung Berung" || this.geocode[i].kecamatan == "Kecamatan Ujung Berung"){
@@ -294,13 +294,13 @@ ClassificationChange(values:any){
           if(this.geocode[i].kecamatan == "Kecamatan Antapani"){
                    this.Antapani = this.Antapani + 1
           }
-          if(this.geocode[i].kecamatan == "Kecamatan Batununggal"){
+          if(this.geocode[i].kecamatan == "Kecamatan Batununggal" || this.geocode[i].kecamatan == "Batununggal"){
                    this.Batununggal = this.Batununggal + 1;
           }
           if(this.geocode[i].kecamatan == "Kecamatan Bojongloa Kaler"){
                    this.Bojongloa_Kaler = this.Bojongloa_Kaler + 1;
           }
-          if(this.geocode[i].kecamatan == "Cidadap"){
+          if(this.geocode[i].kecamatan == "Cidadap" || this.geocode[i].kecamatan == "Kecamatan Cidadap"){
                    this.Cidadap = this.Cidadap + 1;
           }
           if(this.geocode[i].kecamatan == "Kecamatan Bandung Wetan"){
@@ -312,10 +312,10 @@ ClassificationChange(values:any){
           if(this.geocode[i].kecamatan == "Lengkong"){
                    this.Lengkong = this.Lengkong + 1;
           }
-          if(this.geocode[i].kecamatan == "Kecamatan Astanaanyar"){
+          if(this.geocode[i].kecamatan == "Kecamatan Astanaanyar" || this.geocode[i].kecamatan == "Astanaanyar"){
                 this.Astana_Anyar = this.Astana_Anyar + 1;
           }
-          if(this.geocode[i].kecamatan == "Gegebage" || this.geocode[i].kecamatan == "Gedebage" || this.geocode[i].kecamatan == "Kecamatan Gegebage"){
+          if(this.geocode[i].kecamatan == "Gegebage" || this.geocode[i].kecamatan == "Gede bage" || this.geocode[i].kecamatan == "Kecamatan Gegebage"){
                 this.Gedebage = this.Gedebage + 1;
           }
           if(this.geocode[i].kecamatan == "Cicendo"){

@@ -22,15 +22,15 @@ export class NominatimService {
   }
 
   getLocation(): Observable<GeocodeResponse[]> {
-    return this.http.get<GeocodeResponse[]>(`http://0.0.0.0:5000/enrichments/tempat`).catch(NominatimService._handleError);
+    return this.http.get<GeocodeResponse[]>(`http://127.0.0.1:5000/enrichments/tempat`).catch(NominatimService._handleError);
   }
 
     getClassification(): Observable<ClassificationResponse[]> {
-    return this.http.get<ClassificationResponse[]>(`http://0.0.0.0:5000/classification`).catch(NominatimService._handleError);
+    return this.http.get<ClassificationResponse[]>(`http://127.0.0.1:5000/classification`).catch(NominatimService._handleError);
   }
 
 async getJsonColor() {
-    var result = await this.http.get<GeocodeResponse[]>(`http://0.0.0.0:5000/enrichments/tempat`).toPromise();
+    var result = await this.http.get<GeocodeResponse[]>(`http://127.0.0.1:5000/enrichments/tempat`).toPromise();
 
     return result;
   }

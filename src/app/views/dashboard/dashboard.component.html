@@ -15,6 +15,9 @@
         <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
           <button type="button" (click)="to2020($event)" class="btn btn-block btn-primary">2020</button>
         </div>
+        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+          <button type="button" class="btn btn-block btn-primary" (click)="to2099($event)" >All Data</button>
+        </div>
       </div>
     </div>
   </div>
@@ -67,14 +70,6 @@
         <div class="col-sm-5">
           <h4 class="card-title mb-0">{{rekapList[2].jenis_rekap}}</h4>
         </div><!--/.col-->
-   <!--      <div class="col-sm-7 d-none d-md-block">
-          <button type="button" class="btn btn-primary float-right"><i class="icon-cloud-download"></i></button>
-          <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
-            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Day" id="option1">Day</label>
-            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Month" id="option2">Month</label>
-            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Year" id="option3">Year</label>
-          </div>
-        </div> -->
       </div><!--/.row-->
       <div class="chart-wrapper" style="height:200px;margin-top:40px;">
         <canvas baseChart class="chart"
@@ -96,7 +91,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          {{rekapList[3].jenis_rekap}}
+          {{rekapList[3].jenis_rekap}} dan {{rekapList[4].jenis_rekap}}
         </div>
         <div class="card-body">
           <div class="row">
@@ -104,7 +99,7 @@
              
                 <div class="col-sm-6">
                   <div class="callout callout-danger">
-                    <small class="text-muted">Jumlah Kejadian</small>
+                    <small class="text-muted">Jumlah Data yang Memiliki Atribut Waktu</small>
                     <br>
                     <strong class="h4">{{rekapList[3].datas[0]+rekapList[3].datas[1]+rekapList[3].datas[2]+rekapList[3].datas[3]+rekapList[3].datas[4]+rekapList[3].datas[5]}} </strong>
                   </div>
@@ -127,21 +122,22 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="callout callout-warning">
-                    <small class="text-muted">Akun yang Posting</small>
+                    <small class="text-muted">Jumlah Data 5 Besar Penyebab Kemacetan</small>
                     <br>
-                    <strong class="h4">78,623</strong>
-                  </div>
-                </div><!--/.col-->
-                <div class="col-sm-6">
-                  <div class="callout callout-success">
-                    <small class="text-muted">Jumlah Posting Lokasi</small>
-                    <br>
-                    <strong class="h4">49,123</strong>
+                    <strong class="h4">{{rekapList[4].datas[0]+rekapList[4].datas[1]+rekapList[4].datas[2]+rekapList[4].datas[3]+rekapList[4].datas[4]}} </strong>
                   </div>
                 </div><!--/.col-->
               </div><!--/.row-->
               <hr class="mt-0">
-
+              <div class="chart-wrapper">
+                <canvas baseChart class="chart"
+                  [datasets]="[{data: [0,0,0],label: ' '},{data: rekapList[4].datas,label: 'Data Penyebab'}]"
+                  [labels]="[ 'banjir','hujan','perbaikan','mobil','pasar']"
+                  [options]="{scaleShowVerticalLines: false,responsive: true}"
+                  [chartType]="'bar'"
+                  [legend]="false"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas></div>
             </div><!--/.col-->
           </div><!--/.row-->
           <br>
@@ -194,6 +190,9 @@
         <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
           <button type="button" (click)="to2020($event)" class="btn btn-block btn-primary">2020</button>
         </div>
+        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+          <button type="button" class="btn btn-block btn-primary" (click)="to2099($event)" >All Data</button>
+        </div>
       </div>
     </div>
   </div>
@@ -201,14 +200,14 @@
 <div class="col-lg-6">
   <div class="card">
     <div class="card-header">
-      {{rekapList[4].jenis_rekap}}
+      {{rekapList[5].jenis_rekap}}
       <div class="card-header-actions">
       </div>
     </div>
     <div class="card-body">
       <div class="chart-wrapper" >
         <canvas baseChart class="chart"
-        [datasets]="[{data: rekapList[4].datas, label: 'Data'}]"
+        [datasets]="[{data: rekapList[5].datas, label: 'Data'}]"
         [labels]="['Bencana', 'Special Event', 'Kebijakan', 'Kelalaian', 'Lain-lain']"
         [chartType]="radarChartType"
         (chartHover)="chartHovered($event)"
@@ -221,14 +220,14 @@
       <div class="col-sm-6 col-lg-6">
     <div class="card">
       <div class="card-header">
-        {{rekapList[5].jenis_rekap}}
+        {{rekapList[6].jenis_rekap}}
         <div class="card-header-actions">
         </div>
       </div>
       <div class="card-body">
         <div class="chart-wrapper" style="width:300px :height:300px;">
           <canvas baseChart class="chart"
-          [data]="rekapList[5].datas"
+          [data]="rekapList[6].datas"
           [labels]="['dago','lembang','cisarua','rancaekek','cikampek']"
           [chartType]="pieChartType"
           (chartHover)="chartHovered($event)"
@@ -244,20 +243,12 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm-5">
-          <h4 class="card-title mb-0">{{rekapList[6].jenis_rekap}}</h4>
+          <h4 class="card-title mb-0">{{rekapList[7].jenis_rekap}}</h4>
         </div><!--/.col-->
-   <!--      <div class="col-sm-7 d-none d-md-block">
-          <button type="button" class="btn btn-primary float-right"><i class="icon-cloud-download"></i></button>
-          <div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
-            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Day" id="option1">Day</label>
-            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Month" id="option2">Month</label>
-            <label class="btn btn-outline-secondary" [(ngModel)]="radioModel" btnRadio="Year" id="option3">Year</label>
-          </div>
-        </div> -->
       </div><!--/.row-->
       <div class="chart-wrapper" style="height:200px;margin-top:40px;">
         <canvas baseChart class="chart"
-        [datasets]="[{data: rekapList[6].datas,label: 'Data Enrichment'}]"
+        [datasets]="[{data: rekapList[7].datas,label: 'Data Enrichment'}]"
         [labels]="['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']"
         [options]="mainChartOptions"
         [colors]="mainChartColours"
@@ -275,7 +266,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          {{rekapList[7].jenis_rekap}}
+          {{rekapList[8].jenis_rekap}} dan {{rekapList[9].jenis_rekap}}
         </div>
         <div class="card-body">
           <div class="row">
@@ -283,9 +274,9 @@
              
                 <div class="col-sm-6">
                   <div class="callout callout-danger">
-                    <small class="text-muted">Jumlah Kejadian</small>
+                    <small class="text-muted">Jumlah Data yang Memiliki Atribut Waktu</small>
                     <br>
-                    <strong class="h4">{{rekapList[7].datas[0]+rekapList[7].datas[1]+rekapList[7].datas[2]+rekapList[7].datas[3]+rekapList[7].datas[4]+rekapList[7].datas[5]}} </strong>
+                    <strong class="h4">{{rekapList[8].datas[0]+rekapList[8].datas[1]+rekapList[8].datas[2]+rekapList[8].datas[3]+rekapList[8].datas[4]+rekapList[8].datas[5]}} </strong>
                   </div>
                 </div><!--/.col-->
 
@@ -293,7 +284,7 @@
  
               <div class="chart-wrapper">
                 <canvas baseChart class="chart"
-                  [datasets]="[{data: rekapList[7].datas,label: 'Data Waktu'}]"
+                  [datasets]="[{data: rekapList[8].datas,label: 'Data Waktu'}]"
                   [labels]="['< 06:00','06:00-08:59','09:00-11:59','12:00-14:59','15:00-17:59','> 18:00']"
                   [options]="{scaleShowVerticalLines: false,responsive: true}"
                   [chartType]="'bar'"
@@ -306,21 +297,22 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="callout callout-warning">
-                    <small class="text-muted">Akun yang Posting</small>
+                    <small class="text-muted">Jumlah Data 5 Besar Penyebab Kemacetan</small>
                     <br>
-                    <strong class="h4">78,623</strong>
-                  </div>
-                </div><!--/.col-->
-                <div class="col-sm-6">
-                  <div class="callout callout-success">
-                    <small class="text-muted">Jumlah Posting Lokasi</small>
-                    <br>
-                    <strong class="h4">49,123</strong>
+                    <strong class="h4">{{rekapList[9].datas[0]+rekapList[9].datas[1]+rekapList[9].datas[2]+rekapList[9].datas[3]}} </strong>
                   </div>
                 </div><!--/.col-->
               </div><!--/.row-->
               <hr class="mt-0">
-
+              <div class="chart-wrapper">
+                <canvas baseChart class="chart"
+                  [datasets]="[{data: [0,0,0],label: ' '},{data: rekapList[9].datas,label: 'Data Penyebab'}]"
+                  [labels]="[ 'banjir','hujan','kecelakaan','perbaikan']"
+                  [options]="{scaleShowVerticalLines: false,responsive: true}"
+                  [chartType]="'bar'"
+                  [legend]="false"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas></div>
             </div><!--/.col-->
           </div><!--/.row-->
           <br>
@@ -373,6 +365,9 @@
         <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
           <button type="button" (click)="to2020($event)" class="btn btn-block btn-primary">2020</button>
         </div>
+        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+          <button type="button" class="btn btn-block btn-primary" (click)="to2099($event)" >All Data</button>
+        </div>
       </div>
     </div>
   </div>
@@ -380,14 +375,14 @@
 <div class="col-lg-6">
   <div class="card">
     <div class="card-header">
-      {{rekapList[8].jenis_rekap}}
+      {{rekapList[10].jenis_rekap}}
       <div class="card-header-actions">
       </div>
     </div>
     <div class="card-body">
       <div class="chart-wrapper" >
         <canvas baseChart class="chart"
-        [datasets]="[{data: rekapList[8].datas, label: 'Data'}]"
+        [datasets]="[{data: rekapList[10].datas, label: 'Data'}]"
         [labels]="['Bencana', 'Special Event', 'Kebijakan', 'Kelalaian', 'Lain-lain']"
         [chartType]="radarChartType"
         (chartHover)="chartHovered($event)"
@@ -400,14 +395,14 @@
       <div class="col-sm-6 col-lg-6">
     <div class="card">
       <div class="card-header">
-        {{rekapList[9].jenis_rekap}}
+        {{rekapList[11].jenis_rekap}}
         <div class="card-header-actions">
         </div>
       </div>
       <div class="card-body">
         <div class="chart-wrapper" style="width:300px :height:300px;">
           <canvas baseChart class="chart"
-          [data]="rekapList[9].datas"
+          [data]="rekapList[11].datas"
           [labels]="['pasteur','sukajadi','lembang','cibiru','cileunyi']"
           [chartType]="pieChartType"
           (chartHover)="chartHovered($event)"
@@ -423,12 +418,12 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm-5">
-          <h4 class="card-title mb-0">{{rekapList[10].jenis_rekap}}</h4>
+          <h4 class="card-title mb-0">{{rekapList[12].jenis_rekap}}</h4>
         </div><!--/.col-->
       </div><!--/.row-->
       <div class="chart-wrapper" style="height:200px;margin-top:40px;">
         <canvas baseChart class="chart"
-        [datasets]="[{data: rekapList[10].datas,label: 'Data Enrichment'}]"
+        [datasets]="[{data: rekapList[12].datas,label: 'Data Enrichment'}]"
         [labels]="['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']"
         [options]="mainChartOptions"
         [colors]="mainChartColours"
@@ -446,7 +441,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          {{rekapList[11].jenis_rekap}}
+          {{rekapList[13].jenis_rekap}}
         </div>
         <div class="card-body">
           <div class="row">
@@ -454,9 +449,9 @@
              
                 <div class="col-sm-6">
                   <div class="callout callout-danger">
-                    <small class="text-muted">Jumlah Kejadian</small>
+                    <small class="text-muted">Jumlah Data yang Memiliki Atribut Waktu</small>
                     <br>
-                    <strong class="h4">{{rekapList[11].datas[0]+rekapList[11].datas[1]+rekapList[11].datas[2]+rekapList[11].datas[3]+rekapList[11].datas[4]+rekapList[11].datas[5]}} </strong>
+                    <strong class="h4">{{rekapList[13].datas[0]+rekapList[13].datas[1]+rekapList[13].datas[2]+rekapList[13].datas[3]+rekapList[13].datas[4]+rekapList[13].datas[5]}} </strong>
                   </div>
                 </div><!--/.col-->
 
@@ -464,7 +459,7 @@
  
               <div class="chart-wrapper">
                 <canvas baseChart class="chart"
-                  [datasets]="[{data: rekapList[11].datas,label: 'Data Waktu'}]"
+                  [datasets]="[{data: rekapList[13].datas,label: 'Data Waktu'}]"
                   [labels]="['< 06:00','06:00-08:59','09:00-11:59','12:00-14:59','15:00-17:59','> 18:00']"
                   [options]="{scaleShowVerticalLines: false,responsive: true}"
                   [chartType]="'bar'"
@@ -477,21 +472,22 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="callout callout-warning">
-                    <small class="text-muted">Akun yang Posting</small>
+                    <small class="text-muted">Jumlah Data 5 Besar Penyebab Kemacetan</small>
                     <br>
-                    <strong class="h4">78,623</strong>
-                  </div>
-                </div><!--/.col-->
-                <div class="col-sm-6">
-                  <div class="callout callout-success">
-                    <small class="text-muted">Jumlah Posting Lokasi</small>
-                    <br>
-                    <strong class="h4">49,123</strong>
+                    <strong class="h4">{{rekapList[14].datas[0]+rekapList[14].datas[1]+rekapList[14].datas[2]+rekapList[14].datas[3]+rekapList[14].datas[4]}} </strong>
                   </div>
                 </div><!--/.col-->
               </div><!--/.row-->
               <hr class="mt-0">
-
+              <div class="chart-wrapper">
+                <canvas baseChart class="chart"
+                  [datasets]="[{data: [0,0,0],label: ' '},{data: rekapList[14].datas,label: 'Data Penyebab'}]"
+                  [labels]="[ 'banjir','rekayasa','hujan','parkir','banyak']"
+                  [options]="{scaleShowVerticalLines: false,responsive: true}"
+                  [chartType]="'bar'"
+                  [legend]="false"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas></div>
             </div><!--/.col-->
           </div><!--/.row-->
           <br>
@@ -527,6 +523,7 @@
 </div>
 
 
+
 <div *ngIf="year == 2020" class="animated fadeIn">
   <div class="row">
   <div class="card" style="width: 100%">
@@ -544,6 +541,9 @@
         <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
           <button type="button" (click)="to2020($event)" class="btn btn-block btn-primary">2020</button>
         </div>
+        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+          <button type="button" class="btn btn-block btn-primary" (click)="to2099($event)" >All Data</button>
+        </div>
       </div>
     </div>
   </div>
@@ -551,14 +551,14 @@
 <div class="col-lg-6">
   <div class="card">
     <div class="card-header">
-      {{rekapList[12].jenis_rekap}}
+      {{rekapList[15].jenis_rekap}}
       <div class="card-header-actions">
       </div>
     </div>
     <div class="card-body">
       <div class="chart-wrapper" >
         <canvas baseChart class="chart"
-        [datasets]="[{data: rekapList[12].datas, label: 'Data'}]"
+        [datasets]="[{data: rekapList[15].datas, label: 'Data'}]"
         [labels]="['Bencana', 'Special Event', 'Kebijakan', 'Kelalaian', 'Lain-lain']"
         [chartType]="radarChartType"
         (chartHover)="chartHovered($event)"
@@ -571,14 +571,14 @@
       <div class="col-sm-6 col-lg-6">
     <div class="card">
       <div class="card-header">
-        {{rekapList[13].jenis_rekap}}
+        {{rekapList[16].jenis_rekap}}
         <div class="card-header-actions">
         </div>
       </div>
       <div class="card-body">
         <div class="chart-wrapper" style="width:300px :height:300px;">
           <canvas baseChart class="chart"
-          [data]="rekapList[13].datas"
+          [data]="rekapList[16].datas"
           [labels]="['rancaekek', 'cileunyi', 'pasteur','kircon','cibiru']"
           [chartType]="pieChartType"
           (chartHover)="chartHovered($event)"
@@ -594,12 +594,12 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm-5">
-          <h4 class="card-title mb-0">{{rekapList[14].jenis_rekap}}</h4>
+          <h4 class="card-title mb-0">{{rekapList[17].jenis_rekap}}</h4>
         </div><!--/.col-->
       </div><!--/.row-->
       <div class="chart-wrapper" style="height:200px;margin-top:40px;">
         <canvas baseChart class="chart"
-        [datasets]="[{data: rekapList[14].datas,label: 'Data Enrichment'}]"
+        [datasets]="[{data: rekapList[17].datas,label: 'Data Enrichment'}]"
         [labels]="['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']"
         [options]="mainChartOptions"
         [colors]="mainChartColours"
@@ -617,7 +617,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          {{rekapList[15].jenis_rekap}}
+          {{rekapList[18].jenis_rekap}} dan {{rekapList[19].jenis_rekap}}
         </div>
         <div class="card-body">
           <div class="row">
@@ -625,9 +625,9 @@
              
                 <div class="col-sm-6">
                   <div class="callout callout-danger">
-                    <small class="text-muted">Jumlah Kejadian</small>
+                    <small class="text-muted">Jumlah Data yang Memiliki Atribut Waktu</small>
                     <br>
-                    <strong class="h4">{{rekapList[15].datas[0]+rekapList[15].datas[1]+rekapList[15].datas[2]+rekapList[15].datas[3]+rekapList[15].datas[4]+rekapList[15].datas[5]}} </strong>
+                    <strong class="h4">{{rekapList[18].datas[0]+rekapList[18].datas[1]+rekapList[18].datas[2]+rekapList[18].datas[3]+rekapList[18].datas[4]+rekapList[18].datas[5]}} </strong>
                   </div>
                 </div><!--/.col-->
 
@@ -635,7 +635,7 @@
  
               <div class="chart-wrapper">
                 <canvas baseChart class="chart"
-                  [datasets]="[{data: rekapList[15].datas,label: 'Data Waktu'}]"
+                  [datasets]="[{data: rekapList[18].datas,label: 'Data Waktu'}]"
                   [labels]="['< 06:00','06:00-08:59','09:00-11:59','12:00-14:59','15:00-17:59','> 18:00']"
                   [options]="{scaleShowVerticalLines: false,responsive: true}"
                   [chartType]="'bar'"
@@ -648,21 +648,22 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="callout callout-warning">
-                    <small class="text-muted">Akun yang Posting</small>
+                    <small class="text-muted">Jumlah Data 5 Besar Penyebab Kemacetan</small>
                     <br>
-                    <strong class="h4">78,623</strong>
-                  </div>
-                </div><!--/.col-->
-                <div class="col-sm-6">
-                  <div class="callout callout-success">
-                    <small class="text-muted">Jumlah Posting Lokasi</small>
-                    <br>
-                    <strong class="h4">49,123</strong>
+                    <strong class="h4">{{rekapList[19].datas[0]+rekapList[19].datas[1]+rekapList[19].datas[2]+rekapList[19].datas[3]+rekapList[19].datas[4]}} </strong>
                   </div>
                 </div><!--/.col-->
               </div><!--/.row-->
               <hr class="mt-0">
-
+              <div class="chart-wrapper">
+                <canvas baseChart class="chart"
+                  [datasets]="[{data: [0,0,0],label: ' '},{data: rekapList[19].datas,label: 'Data Penyebab'}]"
+                  [labels]="[ 'banjir','hujan','antrian','penanganan kecelakaan','cuaca']"
+                  [options]="{scaleShowVerticalLines: false,responsive: true}"
+                  [chartType]="'bar'"
+                  [legend]="false"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas></div>
             </div><!--/.col-->
           </div><!--/.row-->
           <br>
@@ -676,6 +677,180 @@
             </thead>
             <tbody  *ngFor="let enrich of enrichmentsList; let i = index">
               <tr *ngIf="enrich.atribut_tanggal < '2021-01-01' && enrich.atribut_tanggal > '2019-12-31'" >
+                <td>{{enrich.data_text}}</td>
+                <td>
+                 <span class="badge badge-pill badge-primary" *ngIf="enrich.atribut_event != 'NULL'">
+                 {{enrich.atribut_event}}</span>
+                 <span class="badge badge-pill badge-secondary" *ngIf="enrich.atribut_fasilitas != 'NULL'">
+                 {{enrich.atribut_fasilitas}}</span>
+                 <span class="badge badge-pill badge-success" *ngIf="enrich.atribut_tempat != 'NULL'">
+                 {{enrich.atribut_tempat}}</span>
+                 <span class="badge badge-pill badge-danger" *ngIf="enrich.atribut_penyebab != 'NULL'">
+                 {{enrich.atribut_penyebab}}</span>
+                </td>
+                <td>{{enrich.atribut_tanggal}} {{enrich.atribut_waktu}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+</div>
+
+<div *ngIf="year == 2099" class="animated fadeIn">
+  <div class="row">
+  <div class="card" style="width: 100%">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+          <button type="button" class="btn btn-block btn-primary" (click)="to2017($event)" >2017</button>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+          <button type="button" (click)="to2018($event)" class="btn btn-block btn-primary">2018</button>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+          <button type="button" (click)="to2019($event)" class="btn btn-block btn-primary">2019</button>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+          <button type="button" (click)="to2020($event)" class="btn btn-block btn-primary">2020</button>
+        </div>
+        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+          <button type="button" class="btn btn-block btn-primary" (click)="to2099($event)" >All Data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-header">
+      {{rekapList[20].jenis_rekap}}
+      <div class="card-header-actions">
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="chart-wrapper" >
+        <canvas baseChart class="chart"
+        [datasets]="[{data: rekapList[20].datas, label: 'Data'}]"
+        [labels]="['Bencana', 'Special Event', 'Kebijakan', 'Kelalaian', 'Lain-lain']"
+        [chartType]="radarChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div class="col-sm-6 col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        {{rekapList[21].jenis_rekap}}
+        <div class="card-header-actions">
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper" style="width:300px :height:300px;">
+          <canvas baseChart class="chart"
+          [data]="rekapList[21].datas"
+          [labels]="['lembang', 'pasteur', 'sukajadi','cibiru','rancaekek']"
+          [chartType]="pieChartType"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div><!--/.row-->
+  <!-- <div class="row"> -->
+  <div class="col-lg-13">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-5">
+          <h4 class="card-title mb-0">{{rekapList[22].jenis_rekap}}</h4>
+        </div><!--/.col-->
+      </div><!--/.row-->
+      <div class="chart-wrapper" style="height:200px;margin-top:40px;">
+        <canvas baseChart class="chart"
+        [datasets]="[{data: rekapList[22].datas,label: 'Data Enrichment'}]"
+        [labels]="['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']"
+        [options]="mainChartOptions"
+        [colors]="mainChartColours"
+        [legend]="mainChartLegend"
+        [chartType]="mainChartType"></canvas>
+      </div>
+    </div>
+  </div>
+    </div>
+
+ <!--  </div>/.row -->
+  <!--/.card-->
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          {{rekapList[18].jenis_rekap}} dan {{rekapList[23].jenis_rekap}}
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+             
+                <div class="col-sm-6">
+                  <div class="callout callout-danger">
+                    <small class="text-muted">Jumlah Data yang Memiliki Atribut Waktu</small>
+                    <br>
+                    <strong class="h4">{{rekapList[23].datas[0]+rekapList[23].datas[1]+rekapList[23].datas[2]+rekapList[23].datas[3]+rekapList[23].datas[4]+rekapList[23].datas[5]}} </strong>
+                  </div>
+                </div><!--/.col-->
+
+              <hr class="mt-0">
+ 
+              <div class="chart-wrapper">
+                <canvas baseChart class="chart"
+                  [datasets]="[{data: rekapList[23].datas,label: 'Data Waktu'}]"
+                  [labels]="['< 06:00','06:00-08:59','09:00-11:59','12:00-14:59','15:00-17:59','> 18:00']"
+                  [options]="{scaleShowVerticalLines: false,responsive: true}"
+                  [chartType]="'bar'"
+                  [legend]="false"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas></div>
+
+            </div><!--/.col-->
+            <div class="col-sm-6">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="callout callout-warning">
+                    <small class="text-muted">Jumlah Data 5 Besar Penyebab Kemacetan</small>
+                    <br>
+                    <strong class="h4">{{rekapList[24].datas[0]+rekapList[24].datas[1]+rekapList[24].datas[2]+rekapList[24].datas[3]+rekapList[24].datas[4]}} </strong>
+                  </div>
+                </div><!--/.col-->
+              </div><!--/.row-->
+              <hr class="mt-0">
+              <div class="chart-wrapper">
+                <canvas baseChart class="chart"
+                  [datasets]="[{data: [0,0,0],label: ' '},{data: rekapList[24].datas,label: 'Data Penyebab'}]"
+                  [labels]="[ 'banjir','hujan','rekayasa','parkir','banyak']"
+                  [options]="{scaleShowVerticalLines: false,responsive: true}"
+                  [chartType]="'bar'"
+                  [legend]="false"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas></div>
+            </div><!--/.col-->
+          </div><!--/.row-->
+          <br>
+          <table class="table table-responsive-sm table-hover table-outline mb-0" style="overflow-y:scroll;height:500px;display:block;">
+            <thead class="thead-light">
+              <tr>
+                <th>Tweet</th>
+                <th class="text-center">Attribute from tweet</th>
+                <th>Post at</th>
+              </tr>
+            </thead>
+            <tbody  *ngFor="let enrich of enrichmentsList; let i = index">
+              <tr>
                 <td>{{enrich.data_text}}</td>
                 <td>
                  <span class="badge badge-pill badge-primary" *ngIf="enrich.atribut_event != 'NULL'">
